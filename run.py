@@ -20,9 +20,9 @@ def activo():
     return render_template("activo.html")
 
 
-@app.route("/More Information")
-def info():
-    return render_template("info.html")
+@app.route("/Recipes")
+def recipe():
+    return render_template("recipe.html")
 
 
 @app.route("/contact")
