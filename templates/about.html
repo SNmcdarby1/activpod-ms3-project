@@ -3,14 +3,19 @@
 {{activo}}
 <h2>{{page_title}}</h2>
 
+
 <div class="blockqoute">
  <subheading>Fluids used for smoothies<subheading>
   <p>
          Pour liquids (1 to 2 cups) in first for efficient blending. Examples: coconut water, milk, juice, kefir, kombucha, herbal or green tea. To add a little Spice, sprinkle in spices, herbs, citrus zest, natural extracts and flavorings and sweeteners
  </p>
- <subheading><subheading>
- <subheading><subheading>
- <subheading><subheading>
+ <subheading>
+ <p>
+    A daily smoothie can offer a super convenient way to get your fruits and veggies in while also nourishing your body with many essential vitamins and minerals. The key is to maximize those benefits by focusing on whole, nutrient-dense foods while avoiding added sugars as much as possible
+ 
+ </P>
+ <subheading>
+
  
   <div class="row featurette">
     <div class="col-md-7">
@@ -49,5 +54,42 @@
      </div>
      </div>
    </div>
+   
+    {% for member in company %}
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+            
+            {% else %}
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
 
 {% endblock %}
+
