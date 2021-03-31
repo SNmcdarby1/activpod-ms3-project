@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, render_template
 
 
@@ -12,7 +13,10 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html", page_title="About")
+    data = []
+    with open("data/activo/,json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template("about.html", page_title="About", activo=data)
 
 
 @app.route("/Activo")
@@ -22,15 +26,15 @@ def activo():
 
 @app.route("/Recipes")
 def recipe():
-    return render_template("recipe.html", page_title="Recipe", list_of_numbers=[1, 2, 3])
+    return render_template("recipe.html", page_title="Recipe",)
 
 
-@app.route("/contact")
+@ app.route("/contact")
 def contact():
     return render_template("contact.html", page_title="Contact")
 
 
-@app.route("/login")
+@ app.route("/login")
 def login():
     return render_template("login.html", page_title="Login")
 
